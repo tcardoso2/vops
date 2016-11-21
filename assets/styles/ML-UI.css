@@ -1,0 +1,1036 @@
+﻿body 
+{
+    /*background: url(themes/base/bgs/Transformers-War-For-Cybertron-Teaser-Trailer_2.jpg) repeat;*/
+    -webkit-transform-style: preserve-3d;
+    -webkit-perspective: 0;
+    -webkit-perspective-origin:-50% 50%;
+    -webkit-transition: -webkit-transform 1s ease;
+}
+
+body.embedded-scene 
+{
+    background: Black none;
+    -webkit-transform-style: preserve-3d;
+    -webkit-perspective: 0;
+    -webkit-perspective-origin:-50% 50%;
+    -webkit-transition: -webkit-transform 1s ease;
+}
+
+#main
+{
+    background-color: rgba(255,255,255,0.93);
+}
+
+.embedded-scene #main
+{
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -o-border-radius: 4px;
+    -ie-border-radius: 4px;
+    background-color: rgba(255,255,255,0.93);
+}
+
+.embedded-scene footer
+{
+    background: none;
+    color: White;
+    position: absolute;
+    top: 100%;
+}
+
+.ml-ui-middle-column
+{
+    position: absolute;
+    left: 33%;
+    width: 57%;
+    overflow: auto;
+    height: 50%;
+}
+
+/* AJAX
+----------------------------------------------------------*/
+.ml-ui-loading-bg
+{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    -webkit-transform: translateZ(100000px);
+    background: url(themes/base/images/pixelblue.png) repeat;
+    left:0px;
+    top:0px;
+}
+.coverall
+{
+    z-index: 1000000000;
+}
+.ml-ui-box
+{
+    position: absolute;
+    z-index: 1000000000;
+    width: 60px;
+    height: 70px;
+    border: 1px solid #5C87B2;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    display:none;
+    left: 50%;
+    top: 40%;
+    padding: 20px;
+    text-align: center;
+    vertical-align: text-bottom;
+    background-color: white;
+}
+
+.warning
+{
+    background-image: url(themes/led/images/application_error.png);
+    background-repeat: no-repeat;
+    background-position: 49% 80%;
+}
+
+.ml-ui-validation-box
+{
+    position: absolute;
+    width: 60px;
+    height: 70px;
+    border: 2px solid white;
+    border-radius: 6px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    display:none;
+    padding: 20px;
+    text-align: center;
+    vertical-align: text-bottom;
+    background-color: red;
+    color: White;
+}
+
+.ml-ui-loader
+{
+    background: white url(themes/base/images/loader.gif) no-repeat 30px 45px;
+}
+
+.ml-ui-warning
+{
+    background-image: url(themes/led/images/application_error.png);
+    background-repeat: no-repeat;
+    background-position: 49% 80%;
+    position: fixed;
+}
+/* HOME POSTS   
+----------------------------------------------------------*/
+
+.ml-ui-arrow-left
+{
+    position: absolute;
+	width: 0; 
+	height: 0;
+	left: -19px;
+	top: 60px;
+	border-top: 10px solid transparent;
+	border-bottom: 2px solid transparent; 
+	border-right:20px solid white;
+	z-index: 1px;
+}
+.ml-ui-arrow-left-border
+{
+    position: absolute;
+	width: 0; 
+	height: 0;
+	left: -21px;
+	top: 59px;
+	border-top: 11px solid transparent;
+	border-bottom: 3px solid transparent; 
+	border-right:21px solid #5C87B2; 
+}
+
+.ml-ui-feedbackbox
+{
+    -webkit-transform: translateX(0px);
+    position: absolute;
+    left: 500px;
+    top: 36px;
+    z-index: 1;
+    width: 450px;
+    height: 118px;
+    border: 5px solid #5C87B2;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    background-color: White;
+    display: none;
+}
+.ml-ui-cheered-uncheeredaction
+{
+    font-size: large;
+}
+
+div.ml-ui-closebutton
+{
+    position: absolute;
+    color: #5C87B2;
+    right: 0%;
+    /*left: 430px;*/
+    top: 0px;
+    z-index: 10;
+}
+
+#ch_ok
+{
+    border: 1px solid #5C87B2;
+    position: absolute;
+    left: 40%;
+    top: 50%;
+}
+
+#ch_accept, #ch_ok2{
+    border: 1px solid #5C87B2;
+    position: absolute;
+    left: 30%;
+    top: 50%;
+}
+
+#ch_deny, #ch_cancel{
+    border: 1px solid #5C87B2;
+    position: absolute;
+    left: 55%;
+    top: 50%;
+}
+
+ul.ml-ui-posts {
+    border-bottom: 1px #5C87B2 solid;
+    padding: 0 0 2px;
+    position: relative;
+    margin: 0;
+    text-align: left;
+    /*-webkit-transition: background-color 1s linear;*/
+}
+
+ul.ml-ui-posts img {
+    margin: 2px 0px 0px 2px;
+}
+
+ul.ml-ui-posts:hover 
+{
+    background-color: #e8eef4;
+}
+
+ul.ml-ui-posts li {
+    display: inline;
+    list-style: none;
+}
+
+ul.ml-ui-posts li img{
+    height: 32px;
+    width: 32px;
+}
+
+ul.ml-ui-posts li.ml-ui-date-reference
+{
+    text-align: right;
+    position: absolute;
+    right: 0px;
+    top: 14px;
+}
+
+li.ml-ui-action-general
+{
+    padding: 2px;
+    font-size: 100%;
+    background-color: #e8eef4;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    cursor: pointer;
+}
+
+ul.ml-ui-posts li.ml-ui-action-comment
+{
+    text-align: right;
+    position: absolute;
+    right: 140px;
+    top: 12px;
+    padding-left: 18px;
+    background-image: url(themes/led/images/microphone.png);
+    background-repeat: no-repeat ;
+    background-position: 2px 2px;
+}
+
+ul.ml-ui-posts li.ml-ui-action-cheer
+{
+    text-align: right;
+    position: absolute;
+    right: 256px;
+    top: 12px;
+    /*By default are hidden*/
+    visibility: hidden;
+    padding-left: 18px;
+    background-image: url(themes/led/images/award_star_gold.png);
+    background-repeat: no-repeat ;
+    background-position: 2px 2px;
+}
+ul.ml-ui-posts li.ml-ui-noofcheers
+{
+    text-align: right;
+    position: absolute;
+    right: 320px;
+    top: 12px;
+    padding-right: 18px;
+}
+
+ul.ml-ui-posts li.ml-ui-noofcomments
+{
+    text-align: right;
+    position: absolute;
+    right: 118px;
+    top: 12px;
+    padding-left: 18px;
+}
+
+.ml-ui-subposts 
+{
+    position: absolute;
+    left: 5%;
+    background-color: #F5FEFF;
+    border: 4px #5C87B2 solid;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    padding: 0 0 2px;
+    position: relative;
+    margin: 0;
+    text-align: left;
+    width: 95%;
+    /*-webkit-transition: background-color 1s linear;*/
+}
+
+/*Suggestion box*/
+ul.ml-ui-suggestions-box
+{
+    position: absolute;
+    width: 10px;
+    list-style-type: none;
+    z-index: 100;
+}
+
+ul.ml-ui-suggestions-box li
+{
+    border: 1px solid #5C87B2;
+    background-color: white;
+    color: #5C87B2;
+    font-style: italic;
+    padding: 4px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    float: left;
+    width: 100px;
+    cursor: pointer;
+}
+
+ul.ml-ui-suggestions-box li.SBSelected, ul.ml-ui-suggestions-box li:hover
+{
+    background: #E8F4E8 url(themes/led/images/tag_blue.png) no-repeat center right;
+    color: Green;
+    font-weight: bold;
+    border: 2px solid green;
+}
+
+.hidden {
+    /*display: none;*/
+}
+
+.ml-ui-highlight-item
+{
+    background-color: #5C87B2;
+    color: White;
+    position: absolute;
+    z-index: 5;
+}
+
+.ml-ui-highlight-item-whitebg
+{
+    background-color: White;
+    position: absolute;
+    z-index: 5;
+}
+
+ul.ml-ui-highlight-item:hover, li.ml-ui-action-general:hover
+{
+    background-color: #5C87B2;
+    color: White;
+}
+
+.ml-ui-highlight-item li
+{
+    background-color: #5C87B2;
+    color: White;
+}
+/*Checkin input*/
+li.ml-ui-feedbackbox
+{
+    background-color: White;
+    color: #5C87B2;
+}
+
+#checkins-inner
+{
+    position: absolute;
+    width: 92%;
+}
+
+/*Quests*/
+
+.ml-ui-quest-checkinquote
+{
+    padding: 5px;
+    font-size: 80%;
+    font-style: italic;
+    background-color: #fefea4;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+
+.ml-ui-quest-checkinquote li
+{
+    display: inline;
+    list-style: none;
+}
+
+li.ml-ui-action-COMPLEMENT:hover, li.ml-ui-action-DEFINE:hover
+{
+    color: White;
+}
+li.ml-ui-action-COMPLEMENT, li.ml-ui-action-DEFINE
+{
+    text-align: right;
+    position: absolute;
+    bottom: 0px;
+    color: Orange;
+    left: 100px;
+    border: 1px dotted Orange;
+}
+
+li.ml-ui-action-DEFINE
+{
+    left: 300px;
+    color: Red;
+}
+
+.ml-ui-quest-item-submit
+{
+    display: none;
+}
+
+li.ml-ui-action-COMPLEMENT select, li.ml-ui-action-DEFINE select
+{
+    display: none;
+}
+/*End Quests*/
+
+/*Master*/
+
+.ml-ui-coins
+{
+}
+
+.ml-ui-coin
+{
+    width: 16px;
+    height: 16px;
+    position: absolute; 
+    top: 6px;
+    /*border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    background-color: Yellow;*/
+    /*background: transparent url(themes/base/images/Coinx16.png) no-repeat;*/
+    background: transparent url(themes/led/images/coins.png) no-repeat;
+}
+
+.ml-ui-xp
+{
+    width: 16px;
+    height: 16px;
+    position: absolute; 
+    top: 6px;
+    background: transparent url(themes/led/images/crown_silver.png) no-repeat;
+}
+
+.ml-ui-radius
+{
+    width: 16px;
+    height: 16px;
+    position: absolute; 
+    top: 6px;
+    background: transparent url(themes/led/images/target.png) no-repeat;
+}
+
+ul.ml-ui-transitions-FadingOutUpFast
+{
+    position: absolute;
+    font-size: large;
+    color: #5c87b2;
+}
+
+ul.ml-ui-transitions-FadingOutUpFast li
+{
+    display: inline;
+    list-style: none;
+}
+
+.ml-ui-transitions-rotateY
+{
+    -webkit-animation: rotateY 3s infinite ease-in-out;
+}
+
+.ml-ui-transitions-FadingOutUpFast
+{
+    -webkit-animation: MovingUpIncreaseFont 4s 1 ease-in-out;
+    -webkit-animation-fill-mode: forwards;
+}
+
+.ml-ui-transitions-increase-font
+{
+    -webkit-animation: rotateYFadingUpFast 4s 1 ease-in;
+    -webkit-animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes rotateY {
+    0% { -webkit-transform: rotateY( 0deg ); }
+    100% { -webkit-transform: rotateY( 179deg ); }
+}
+@-webkit-keyframes MovingUpIncreaseFont {
+    0% { -webkit-transform: translateY(0px);}
+    100% { -webkit-transform: translateY(-240px); font-size: 400%; opacity: 0; }
+}
+@-webkit-keyframes rotateYFadingUpFast {
+    0% { -webkit-transform: rotateY( 0deg ) translateY(0px); }
+    100% { -webkit-transform: rotateY( 359deg ) translateY(-300px); opacity: 0; }
+}
+/*End Master*/
+
+/*General*/
+.ml-ui-hidden
+{
+    display: none;
+}
+
+ul.ml-ui-pager
+{
+    float: left;
+    cursor: pointer;
+    color: Black;
+    position: absolute;
+    width: 100%;
+}
+ul.ml-ui-pager li {
+    display: inline;
+    position: absolute;
+    list-style: none;
+}
+ul.ml-ui-pager li.ml-ui-previous {
+    left: 0px;
+}
+ul.ml-ui-pager li.ml-ui-next {
+    right: 225px;
+}
+
+.ml-ui-date-reference
+{
+    padding: 2px;
+    font-size: 70%;
+    background-color: #e8eef4;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+
+.ml-ui-button-white
+{
+    padding: 2px;
+    font-size: 90%;
+    background-color: white;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    cursor: pointer;
+    /*-webkit-transition: all .3s linear;*/
+}
+
+.ml-ui-button-white:hover
+{
+    background-color: #5C87B2;
+    color: White;
+}
+.smallbutton
+{
+    width: 50px;
+    text-align: center;
+    margin: 0px 2px 0px 2px;
+}
+
+#ml-ui-main-usercheckin
+{
+    position: relative;
+    left: 140px;
+    width: 70%;
+}
+
+#ml-ui-main-usercheckin textarea
+{
+    border: 1px solid #5C87B2;
+    background-color: white;
+    font-size: 16px;
+    font-weight: bold;
+    color: #5C87B2;
+    font-style: italic;
+    padding: 4px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    width: 100%;
+}
+
+#ml-ui-main-usercheckin textarea:focus
+{
+    background-color: #e8eef4;
+}
+
+#ml-ui-main-userpicture
+{
+    position: absolute;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    margin: 8px;
+}
+
+#ml-ui-main-userpicture.relative
+{
+    position: relative;
+}
+
+#ml-ui-followers, #ml-ui-follower-requests
+{
+    position: absolute;
+    left: 70%;
+    top: -100px;
+    border: 1px solid #5C87B2;
+    background-color: white;
+    font-size: 16px;
+    font-weight: bold;
+    color: #5C87B2;
+    font-style: italic;
+    padding: 4px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    cursor: pointer;
+    padding: 0px 4px 0px 4px;
+    width: 25%;
+}
+#ml-ui-followers li, #ml-ui-follower-requests li
+{
+    list-style: none;
+    padding: 0px 4px 0px 4px;
+}
+
+.ml-ui-thumb
+{
+    width: 32px;
+    padding: 0px 5px 0px 
+}
+
+.ml-ui-item:hover
+{
+    background-color: #5C87B2;
+    color: white;
+}
+
+.ml-ui-item>.ml-ui-item li:hover
+{
+    background-color: white;
+    color: #5C87B2;
+}
+
+#ml-ui-followers:hover, #ml-ui-follower-requests:hover
+{
+    background-color: #E8EEF4;
+}
+
+.ml-ui-feedbackbox textarea
+{
+    width: 92%;
+}
+
+/*End General*/
+
+/*ML User search*/
+#ml-control-usersimplesearch
+{
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+}
+#simplesearchdisplay {
+    display: run-in;
+    text-align: center;
+    margin: 10px;
+}
+#ml-ui-usersimplesearch-results {
+    display: none;
+    position: absolute;
+    z-index: 10;
+    border: 1px solid #5C87B2;
+}
+#ml-ui-usersimplesearch-results li 
+{
+    list-style-type: none;
+    text-align: left;
+}
+#ml-ui-usersimplesearch-results li.UPSelected
+{
+    background-color: #E8EEF4;
+    font-weight: bold;
+}
+#ml-ui-usersimplesearch-results li:hover
+{
+    background-color: #F8F8C4;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/*End ML User search*/
+
+/* Validation */
+.ml-ui-field-validation
+{
+    border: 1px dashed red;
+    background-color: #FAA;
+}
+/*End Validation*/
+
+/* Actor Scripts style */
+
+.ml-ui-actor-dialog-embedded
+{
+}
+
+.ml-ui-actor-dialog
+{
+    position: absolute;
+    top: 0px;
+    left: -10px;
+    z-index: 100000000000000000000000000000000000000000;
+    background-color: Black;
+    border: 3px solid White;
+    color: White;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    padding: 10px 10px 10px 20px;
+    width: 80%;
+    /*Webkit only*/
+    -webkit-transition: -webkit-transform 1s ease, color 2s;
+    -webkit-transform: translate3d(-400px, 420px, 0px) scale3d(0.5,0.5,0.5);
+	/*-webkit-box-shadow: 5px 5px 6px rgba(1,0,0,0.8);
+	-moz-box-shadow: 5px 5px 6px rgba(0,0,0,0.8);
+	box-shadow: 5px 5px 6px rgba(0,0,0,0.8);*/
+}
+
+.ml-transitions-load
+{
+    -webkit-transform: translate3d(0px, 400px, 0px) scale3d(1,1,1);
+}
+
+.ml-transitions-button-load
+{
+    -webkit-transform: translate3d(0px, 0px, 0px);
+}
+
+.ml-ui-button
+{
+    padding: 2px 20px 2px 20px;
+    font-size: 90%;
+    background-color: black;
+    color: White;
+    border-radius: 4px;
+    border: 1px solid white;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    cursor: pointer;
+    width: 80px;
+    text-align: center;
+    -webkit-transition: -webkit-transform 1s ease;
+    /*-webkit-transition: all .3s linear;*/
+}
+
+.ml-ui-button:hover
+{
+    background-color: White;
+    color: Black;
+    font-weight: bolder;
+}
+
+.ml-transitions-response
+{
+    color: White;
+}
+
+.ml-ui-actor-dialog .runtext, .ml-ui-actor-dialog-embedded .runtext
+{
+    padding-top: 12px;
+    font-size: large;
+    padding-bottom: 18px;
+}
+
+.ml-ui-actor-dialog .runtext-title, .ml-ui-actor-dialog-embedded .runtext-title
+{
+    font-size: x-large;
+}
+
+/* End Actor Scripts */
+
+
+/*Ribbon style*/
+
+ .ribbon-wrapper {
+	position: absolute;
+	border-bottom: px solid #ccc;
+	border-top: px solid #ccc;
+	-moz-border-bottom-colors: rgba(0, 0, 0, 0.02) rgba(0, 0, 0, 0.04) rgba(0, 0, 0, 0.06) rgba(0, 0, 0, 0.08) rgba(0, 0, 0, 0.10) rgba(0, 0, 0, 0.12) rgba(0, 0, 0, 0.14) rgba(0, 0, 0, 0.16) rgba(0, 0, 0, 0.18) rgba(0, 0, 0, 0.20);
+	-webkit-border-bottom-colors: rgba(0, 0, 0, 0.02) rgba(0, 0, 0, 0.04) rgba(0, 0, 0, 0.06) rgba(0, 0, 0, 0.08) rgba(0, 0, 0, 0.10) rgba(0, 0, 0, 0.12) rgba(0, 0, 0, 0.14) rgba(0, 0, 0, 0.16) rgba(0, 0, 0, 0.18) rgba(0, 0, 0, 0.20);
+	-moz-border-top-colors: rgba(0, 0, 0, 0.02) rgba(0, 0, 0, 0.04) rgba(0, 0, 0, 0.06) rgba(0, 0, 0, 0.08) rgba(0, 0, 0, 0.10) rgba(0, 0, 0, 0.12) rgba(0, 0, 0, 0.14) rgba(0, 0, 0, 0.16) rgba(0, 0, 0, 0.18) rgba(0, 0, 0, 0.20);
+	-webkit-border-top-colors: rgba(0, 0, 0, 0.02) rgba(0, 0, 0, 0.04) rgba(0, 0, 0, 0.06) rgba(0, 0, 0, 0.08) rgba(0, 0, 0, 0.10) rgba(0, 0, 0, 0.12) rgba(0, 0, 0, 0.14) rgba(0, 0, 0, 0.16) rgba(0, 0, 0, 0.18) rgba(0, 0, 0, 0.20);
+}
+  .ribbon-front {
+	background-color: #E40000;	height: 50px;
+	width: 100px;
+	position: relative;
+	left:-20px;
+	top: -10px;
+	z-index: 2;
+}
+
+  .ribbon-front-text {
+	height: 50px;
+	color: #FFF;
+	width: 100px;
+	position: relative;
+	border: 1px dashed white;
+	margin: 3px 3px 3px 3px;
+}
+  .ribbon-front,
+  .ribbon-back-left,
+  .ribbon-back-right
+{
+	-moz-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
+	-khtml-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
+	-webkit-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
+	-o-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
+}
+
+  .ribbon-edge-topleft,
+  .ribbon-edge-topright,
+  .ribbon-edge-bottomleft,
+  .ribbon-edge-bottomright {
+	position: absolute;
+	z-index: 1;
+	border-style:solid;
+	height:0px;
+	width:0px;
+}
+
+  .ribbon-edge-topleft,
+  .ribbon-edge-topright {
+}
+
+  .ribbon-edge-bottomleft,
+  .ribbon-edge-bottomright {
+	top: 40px;
+}
+
+  .ribbon-edge-topleft,
+  .ribbon-edge-bottomleft {
+	left: -20px;
+	border-color: transparent #980808 transparent transparent;
+}
+
+  .ribbon-edge-topleft {
+	top: 0px;
+	border-width: 0px 20px 0 0;
+}
+  .ribbon-edge-bottomleft {
+	border-width: 0 20px 10px 0;
+}
+
+  .ribbon-edge-topright,
+  .ribbon-edge-bottomright {
+	left: 20px;
+	border-color: transparent transparent transparent #980808;
+}
+
+  .ribbon-edge-topright {
+	top: 0px;
+	border-width: 0px 0 0 0px;
+}
+  .ribbon-edge-bottomright {
+	border-width: 0 0 0px 0px;
+}
+
+  .ribbon-back-left {
+	position: absolute;
+	top: 10px;
+	left: -70px;
+	width: 70px;
+	height: 40px;
+	background-color: #BC1313;	z-index: 0;
+}
+
+  .ribbon-back-right {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 0px;
+	height: 40px;
+	z-index: 0;
+}
+
+.ribbon {
+ font-size: 16px !important;
+ /* This ribbon is based on a 16px font side and a 24px vertical rhythm. I've used em's to position each element for scalability. If you want to use a different font size you may have to play with the position of the ribbon elements */
+
+ width: 20%;
+    
+ position: absolute;
+ background: #ba89b6;
+ color: #fff;
+ left: 34px;
+ top: 50px;
+ text-align: center;
+ padding: 1em 2em; /* Adjust to suit */
+ margin: 2em auto 3em; /* Based on 24px vertical rhythm. 48px bottom margin - normally 24 but the ribbon 'graphics' take up 24px themselves so we double it. */
+}
+.ribbon:before {/*, .ribbon:after {*/
+ content: "";
+ position: absolute;
+ display: block;
+ bottom: -1em;
+ border: 1.5em solid #986794;
+ z-index: -1;
+}
+.ribbon:before {
+ left: -2em;
+ border-right-width: 1.5em;
+ border-left-color: transparent;
+}
+.ribbon:after {
+ right: -2em;
+ border-left-width: 1.5em;
+ border-right-color: transparent;
+}
+.ribbon .ribbon-content:before, .ribbon .ribbon-content:after {
+ content: "";
+ position: absolute;
+ display: block;
+ border-style: solid;
+ border-color: #804f7c transparent transparent transparent;
+ bottom: -1em;
+}
+.ribbon .ribbon-content:before {
+ left: 0;
+ border-width: 1em 0 0 1em;
+}
+/*
+.ribbon .ribbon-content:after {
+ right: 0;
+ border-width: 1em 1em 0 0;
+}*/
+.ml-ui-owner
+{
+    position: absolute;
+    left: 0;
+    top:0;
+    z-index: 100px;
+    background-color: Red;
+}
+
+:-webkit-full-screen-document {
+  
+}
+/* A full-screen element that is not the root element should be stretched to cover the viewport. */
+:-webkit-full-screen:not(:root) {
+  width: 100% !important;
+  float: none !important;
+  background-color: Black;
+}
+:-webkit-full-screen #container {
+  width: 100%;
+}
+
+.item-ok
+{
+    color: Green;
+}
+
+/* RPG Styles */
+.ml-ui-rpg-policies a
+{
+    background-color: White;
+    padding: 1px;
+    margin: 1px 1px 1px 1px;
+}
+.ml-ui-rpg-policies a:hover
+{
+    background-color: Blue;
+    color: White;
+}
+
+.ml-ui-rpg-button
+{
+    padding: 1px 20px 1px 20px;
+    font-size: 90%;
+    background-color: Blue;
+    color: White;
+    border-radius: 2px;
+    border: 1px solid white;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    cursor: pointer;
+    width: 80px;
+    text-align: center;
+    -webkit-transition: -webkit-transform 1s ease;
+    /*-webkit-transition: all .3s linear;*/
+}
+
+.ml-ui-rpg-button:hover
+{
+    background-color: White;
+    color: Blue;
+    font-weight: bolder;
+}
+
+.ml-ui-rpg-indicatorgroup
+{
+    list-style-type: none;
+    float: left;
+}
+.ml-ui-rpg-indicatorgroup-name
+{
+    cursor: pointer;
+}
+.ml-ui-rpg-indicatorgroup-name:hover
+{
+}
+.ml-ui-rpg-indicatorgroup-content
+{
+    position: relative;
+    left: 0px;
+    display: none;
+    text-align: left;
+}

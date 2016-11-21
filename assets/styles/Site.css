@@ -1,0 +1,55 @@
+﻿body { background-color: black; margin: 0px; overflow: hidden; }
+#container{ position: absolute; width: 100%; height: 100%; z-index: 0; top: 0px; left: 0px;font-family:Monospace; font-size:12px; color: white;}
+#description { top: 0px; width: 100%; padding: 5px; text-align:center; }
+#fps { position: absolute; top: 24px; width: 100%; padding: 5px; text-align:left; }
+#renderState { position: absolute; top: 34px; width: 100%; padding: 5px; text-align:left; }
+#renderEfficiency { position: absolute; top: 64px; width: 100%; padding: 5px; text-align:left; }
+#cursor { position: absolute; top: 94px; width: 100%; padding: 5px;  text-align:left; }
+#editPosition { position: absolute; top: 124px; width: 100%; padding: 5px; text-align:right; }
+#mode { position: absolute; top: 154px; width: 100%; padding: 5px; text-align:left; }
+#ajaxResponses{ position: absolute; top: 50px; right: 50px; width: 50%; padding: 0px; text-align:right; background-color:blue; }
+#topcorner{ position: absolute; top: 0px; right: 0px; width: 420px; padding: 5px; text-align:left; }
+#topcorner>.qButton { position: absolute; top: 0px; right: 0px; width: 10px; padding: 5px; text-align:left; }
+#quickButtons { position: absolute; top: 184px; width: 100%; padding: 5px; text-align:left; }
+#controlPanel { margin: 0px; position: absolute; left: 0px; bottom: 0px; width: 100%; text-align:center; z-index: 10; }
+#controlPanel li { cursor: pointer; position: absolute; bottom: 0px; list-style: none; width: 50%; height: 32px; background-color: blue; }
+#controlPanel li:hover { background-color: #00b000; }
+#controlPanel li{ height: 40px; width: 80px; }
+#controlPanel li#left { left: 0px; }
+#controlPanel li#right { left: 160px; }
+#controlPanel li#up { left: 80px; bottom: 40px; }
+#controlPanel li#down { left: 80px; }
+#controlPanel li#a { right: 40px; bottom: 0px; }
+#controlPanel li#s { right: 120px; bottom: 0px; }
+#controlPanel li#d { right: 200px; bottom: 0px; }
+#controlPanel li#q { right: 40px; bottom: 40px; }
+#controlPanel li#w { right: 120px; bottom: 40px; }
+#controlPanel li#e { right: 200px; bottom: 40px; }
+.qButton { background-color: red; padding: 3px; cursor: pointer; position: absolute; }
+.qButton:hover { background-color: white; color: red; }
+.mapItem { display: none; }
+.zisomap_highlight_msg { background-color: red; padding: 3px; cursor: pointer; position: absolute; }
+
+.itemMenu, .itemTitle{
+    background: red;
+    position: absolute;
+    color: white;
+    z-index: 100;
+    cursor: pointer;
+}
+.itemMenu{
+    background: blue;
+    width: 180px;
+    display: none;
+}
+ul{
+    list-style: none;
+}
+li.menuItem{
+    width: 100px;
+    left: -30px;
+}
+li.menuItem:hover{
+    background-color:white;
+    color: blue;
+}

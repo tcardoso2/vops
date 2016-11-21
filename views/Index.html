@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "MyLife Map";
+}
+
+@Html.AntiForgeryToken(ML.Internet.Helpers.CreateOrGetSessionS())
+
+@Html.Partial("_IsometricCanvas", new ML.Internet.Models.WorldMapModel() { 
+    noOfTilesX = 10,
+    noOfTilesY = 10,
+    showControlPanel = true
+})
+<!--Adicionar aqui model para o mapa--> 

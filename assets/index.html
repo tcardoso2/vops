@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Isometric App</title>
+        <link href="styles/themes/base/jquery.ui.all.css" rel="stylesheet" type="text/css" />
+        <!--Change theme by adding Content/themes/<theme name>/-->
+        <link href="styles/Site.css" rel="stylesheet" type="text/css" />
+        <link href="styles/ML-UI.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+        <script type="text/javascript" src="js/modernizr-1.7.min.js"></script>
+        <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+        <!--Utils-->
+        <script type="text/javascript" src="js/StringUtils.js"></script>
+        <script type="text/javascript" src="js/ML.Web.js"></script>
+        <script type="text/javascript" src="js/Date.format.js"></script>
+	<script type="text/javascript" src="js/uce/zuce_0.1.9.6.js"></script>
+	<script type="text/javascript" src="js/uce/Core.Gestures.js"></script>
+	<script type="text/javascript" src="js/uce/Core.ControlPanel_0_3.js"></script>
+	<script type="text/javascript" src="js/uce/Core.Canvas_0_8_4.js"></script>
+	<script type="text/javascript" src="js/uce/Core.IsometricMap_0_4.js"></script>
+        <!--Service delegates-->
+        <script type="text/javascript" src="js/svc/map_delegate.js"></script>
+    </head>
+    <body>
+        <body>
+            <div class="page-ui">
+                <header>
+                    <div id="title">
+                        <h1></h1>
+                    </div>
+                </header>
+                <section id="main-ui">
+                    <!--Isometric Canvas control (v.i.3.3.0) 8-Oct-2012-->
+                    <div id="container">
+                        <div id="description">Example I3 - Isometric map with mouse events.</div>
+                        <div id="topcorner">
+                            <span class="ml-ui-rpg-currentRegionDate"></span>
+                            <img src="styles/themes/led/images/calendar_1.png" />
+                            <span class="ml-ui-rpg-regionCalendar"></span>
+                            <img alt="Show this territory's policies" src="styles/themes/led/images/script.png" />
+                        </div>
+                        <div id="fps">0 fps</div>
+                        <div id="renderState"></div>
+                        <div id="renderEfficiency"></div>
+                        <div id="cursor"></div>
+                        <div id="editPosition"></div>
+                        <div id="mode"></div>
+                        <div id="quickButtons"></div>
+                        <!--Not sure if this is required-->
+                        <ul class="mapItem" id="object_1">
+                            <li>-2</li>
+                            <li>2</li>
+                            <li>0</li>
+                            <li>25</li>
+                            <li>4</li>
+                            <li class="menuItems">
+                                <ul>
+                                    <li class="menuItem">
+                                        Menu option 6
+                                    </li>
+                                    <li class="menuItem">
+                                        Menu option 7
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="mapItem" id="object_2">
+                            <li>0</li>
+                            <li>0</li>
+                            <li>0</li>
+                            <li>3</li>
+                            <li>4</li>
+                            <li class="menuItems">
+                                <ul>
+                                    <li class="menuItem">
+                                        Menu option 4
+                                    </li>
+                                    <li class="menuItem">
+                                        Menu option 5
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="mapItem" id="object_3">
+                            <li>-1</li>
+                            <li>-1</li>
+                            <li>0</li>
+                            <li>22</li>
+                            <li>4</li>
+                            <li class="menuItems">
+                                <ul>
+                                    <li class="menuItem">
+                                        Menu option 1
+                                    </li>
+                                    <li class="menuItem">
+                                        Menu option 2
+                                    </li>
+                                    <li class="menuItem">
+                                        Menu option 3
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+		<script type="text/javascript">
+		    /****************************************************
+		    *	MVC
+		    ****************************************************/
+		    //defining the constructor Model
+		    function MexampleI3_3() { };
+		    //defining the object prototype	
+		    MexampleI3_3.prototype = {
+                updateFn: undefined,
+		        maximized: true,
+		        init: function () {
+		        }
+		    };
+
+		    //defining the constructor View
+		    function VexampleI3_3() { };
+		    //defining the object prototype	
+		    VexampleI3_3.prototype = {
+		        init: function () {
+		        },
+
+		        deleteMenus: function () {
+		            $('.itemMenu').remove();
+		        },
+
+		        showMenu: function (coords, title) {
+		            //clears existing menus first
+		            $('.itemTitle').remove();
+		            $('.itemMenu').remove();
+		            var _menu = $('<div class="itemMenu"></div>');
+		            _menu.append($('#' + title + '>.menuItems').html());
+		            _menu.css({
+		                left: coords.x + 'px',
+		                top: coords.y + 'px'
+		            });
+		            //associate mouseover event
+		            $("#container").append(_menu);
+		            _menu.fadeIn(500);
+		        },
+
+		        showTitle: function (coords, title) {
+		            //clears existing menus first
+		            $('.itemTitle').remove();
+		            var _menu = $('<div class="itemTitle">' + title + '</div>');
+		            _menu.css({
+		                left: 5 + coords.x + 'px',
+		                top: coords.y + 'px'
+		            }).delay(2000).fadeOut(500);
+		            $("#container").append(_menu);
+		        }
+		    };
+
+		    //defining the constructor Controller
+		    function CexampleI3_3() { };
+		    //defining the object prototype
+		    CexampleI3_3.prototype = {
+
+		        init: function () {
+		            //The init should have as less code as possible
+		            //This initializes all the Core components.
+		            this.uc.log('Initializing Core Library...')
+		            __initCoreLibrary__();
+		            this.uc.log('Allowing "click" events to happen');
+                    uce('core').forceNotPreventDefaultOn = 'click';
+                    uce('core').forceAllowPropagationOn = 'click';
+		            this.uc.log('Adding render quality handler')
+		            var _qUp = $('<div class="qButton">+</div>').css('left', '40px');
+		            var _qDown = $('<div class="qButton">-</div>').css('left', '60px');
+		            //Requests a map update at the root from ML.Web.js, use  MVC ASP.NET Model to configure
+		            if (this.m.updateFn != undefined)
+		                clearInterval(this.m.updateFn);
+		            uce('exampleI3_3').c.updateMap();
+		            this.m.updateFn = setInterval(function () { uce('exampleI3_3').c.updateMap(); }, 10000);
+		            this.uc.log('Configuring Tile map...')
+		            //Core.IsometricMap.m.tilesData.length.x = 10;
+		            //Core.IsometricMap.m.tilesData.length.y = 10;
+
+		            _qUp.click(function () {
+		                Core.Canvas.quality += 0.5;
+		                //Resets the canvas
+		                Core.IsometricMap.v.rootCanvasObj = Core.Canvas.ResetCanvas('container', undefined, true).GetContext(0);
+		                Core.IsometricMap.c.enableCanvasDOMEvents();
+		                $('#quickButtons>#q').text(Core.Canvas.quality);
+		            });
+		            _qDown.click(function () {
+		                //quality should not be below 1, bcs this causes problem in the rendering - besides it is not required.
+		                if (Core.Canvas.quality > 1) {
+		                    Core.Canvas.quality -= 0.5;
+		                    //Resets the canvas
+		                    Core.IsometricMap.v.rootCanvasObj = Core.Canvas.ResetCanvas('container', undefined, true).GetContext(0);
+		                    Core.IsometricMap.c.enableCanvasDOMEvents();
+		                    $('#quickButtons>#q').text(Core.Canvas.quality);
+		                }
+		            });
+
+		            //Assigns a handler to the top corner button
+		            $('#topcorner>.qButton').click(function () {
+		                var _ucc = uce('exampleI3_3');
+		                var isMaximized = _ucc.m.maximized == true;
+                        document.cancelFullScreen = document.webkitExitFullscreen || document.mozCancelFullScreen || document.exitFullscreen;
+		                if (isMaximized) {
+		                    //Minimize
+		                    $('#container').css('position', 'relative');
+		                    $('#container').animate({ width: window.innerWidth / 2, height: '50%' }, 500);
+		                    Core.Canvas.ResizeLayer(0, window.innerWidth / 2, window.innerHeight / 2);
+		                    $('#topcorner>.qButton').html('&#5123');
+		                    //Allow DOM event propagation and default behaviour 
+		                    uce('core').SetDOMDefaults(true);
+                            if(document.cancelFullScreen)
+                                document.cancelFullScreen();
+		                }
+		                else {
+		                    //Maximize - in Maximized mode, mouse and keyboard events are intercepted.
+		                    $('#container').css('position', 'absolute');
+		                    $('#container').animate({ width: '100%', height: '100%' }, 500);
+		                    Core.Canvas.ResizeLayer(0, window.innerWidth, window.innerHeight);
+		                    $('#topcorner>.qButton').html('&#5121');
+		                    //Don't force DOM event propagation and default behaviour 
+		                    uce('core').SetDOMDefaults(false);
+                            //Use the HTML5 Fullscreen API, if existing
+                            $('#container').each(function(){
+                                if(this.webkitRequestFullscreen)
+                                    this.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+                                else if(this.mozRequestFullScreen)
+                                    this.mozRequestFullScreen();
+                                else if(this.requestFullscreen)
+                                    this.requestFullscreen();
+                            });
+		                }
+		                _ucc.m.maximized = !isMaximized;
+		            });
+
+		            //Adds the quick buttons to the UI and also the current "quality" level of the canvas
+		            $('#quickButtons').append(_qUp).append(_qDown)
+					    .append($('<div id="q">' + Core.Canvas.quality + '</div>'));
+		            
+                    /*
+                    *   There are several ways to populate the map objects, 2 are described below.
+                    *   However, the map here is populated by using a call to the server or the
+                    *   browser session storage
+                    */
+		            //From DOM
+                    //Core.ImageMapObjectFactory.CreateFromDOM($('.mapItem')).ExtractResultToMap(Core.Scene.Map);
+		            //Directly populating the object
+                    //Core.Scene.Map.imageMapAboveFloorObj = [
+		            //	Core.ImageMapObjectFactory.Create(0,0,0,3,4)
+		            //];
+
+                    //gets the gurrent Region date
+                    $('.ml-ui-rpg-currentRegionDate a').click();
+		        },
+
+		        showObjectMenu: function (ev) {
+		            this.v().showMenu(uce('zisomap').m.pointer, uce('zisomap').m.currentTileObj.title);
+		        },
+
+		        showObjectTitle: function (ev) {
+		            this.v().showTitle(uce('zisomap').m.pointer, uce('zisomap').m.currentTileObj.title);
+		        },
+
+		        deleteMenus: function () {
+		            this.v().deleteMenus();
+		        },
+
+		        updateMap: function () {
+		            //First, pass the screen objects to the DB
+
+                    //Returns true if object was fetched from server
+		            UpdateMap(0, 0);
+		        },
+
+                on_inserted_item: function (e) {
+                    try{
+                    CommitMapItem(e.parentEvent.args.idX,
+                        e.parentEvent.args.idY,
+                        e.parentEvent.args.idZ,
+                        e.parentEvent.args.spriteFrameIdx,
+                        e.parentEvent.args.spriteSheet,
+                        e.parentEvent.args.title);
+                    }catch(e){
+                        alert(e);
+                    }
+                },
+
+                on_deleted_item: function (e) {
+                    try{
+                    DeleteMapItem(e.parentEvent.args.x,
+                        e.parentEvent.args.y,
+                        e.parentEvent.args.z);
+                    }catch(e){
+                        alert(e);
+                    }
+                }
+		    };
+
+		</script>
+		<script type="text/javascript">
+		    /****************************************************
+		    *	USE-CASES
+		    ****************************************************/
+		    uce('exampleI3_3').ready(function (e) {
+
+		        uce('exampleI3_3').logInConsole = true;
+                
+                //Call the Map service to get the number of tiles required
+                md = new MapDelegate();
+                md.size(function (response) {
+                    uce('exampleI3_3').log("Got response from map size service:" + JSON.stringify(response));
+                    uce('exampleI3_3').log('Done. creating isometric map...');
+                    //Core.IsometricMap.m.tilesData.length.x
+                    Core.IsometricMap.m.tilesData.length.x = response.x;
+                    Core.IsometricMap.m.tilesData.length.y = response.y;
+
+                    uce('exampleI3_3').log('Creating MVC structure...')
+                        .setModel(new MexampleI3_3())
+                        .setViewer(new VexampleI3_3())
+                        .setController(new CexampleI3_3());
+                    
+                    uce('exampleI3_3').log('Done. Adding main control panel...');
+                    //uce('zcpanel').raise('addkeyboardcontrol');
+                    uce('zisomap').raise('create')
+                                     
+                    .log('Adding use-cases...')
+                        
+                    .SetRunControllerAutomatically(true)
+                        
+                    //USECASE 1: React to object found
+                    .addusecase('showObjectMenu', 'uc_zisomap_object_found', function (e) {
+                    })
+                        
+                    //USECASE 2: React to object mouse over
+                    .addusecase('showObjectTitle', 'uc_zisomap_object_mouseover', function (e) {
+                    })
+                        
+                    //USECASE 3: ESC delete existing menus
+                    .addusecase('deleteMenus', 'uc_zcpanel_esc', function (e) {
+                                    })
+                        
+                    //USECASE 4: create map item
+                    .addusecase('on_inserted_item', 'uc_zisomap_on_inserted_item', function (e) {
+                    })
+                        
+                    //USECASE 5: delete map item
+                    .addusecase('on_deleted_item', 'uc_zisomap_on_deleted_item', function (e) {
+                    });
+                });
+            });
+            </script>
+    </section>
+</body>
+</html>
